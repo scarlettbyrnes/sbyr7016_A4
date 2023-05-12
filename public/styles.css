@@ -1,0 +1,108 @@
+html {
+    height: 100%;
+    width: 100%;
+  }
+  * {
+    border: 1px solid black;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3A216A;
+    background-color:
+    padding: 20px;
+  }
+  
+  .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3A216A;
+    padding-left: 40px;
+  }
+  
+  .menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin: 0 10px;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .profile {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .profile {
+      display: block;
+      position: relative;
+    }
+    
+    .profile ul {
+      display: none;
+      position: absolute;
+      top: 30px;
+      right: 0;
+      padding: 10px;
+    }
+    
+    .profile:hover ul {
+      display: block;
+    }
+    
+    .logo {
+      order: 1;
+    }
+    
+    .menu {
+      order: 2;
+    }
+    
+    .profile {
+      order: 3;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .logo {
+      text-align: center;
+      order: 1;
+    }
+    
+    .menu {
+      order: 3;
+    }
+    
+    .profile {
+      display: block;
+      order: 2;
+    }
+    
+    .profile a {
+      display: none;
+    }
+    
+    .profile:hover a {
+      display: block;
+      position: relative;
+      top: 20px;
+      right: 0;
+      padding: 10px;
+      text-align: center;
+      z-index: 1;
+    }
+  }
+  
+  .profile img{
+    height: 50px;
+  }
