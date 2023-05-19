@@ -1,37 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Task Tracker</title>
-        <link rel="stylesheet" href="scss/main.scss">
-    </head>
-    <body>
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 
-	
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 </head>
+
 <body>
-	<nav>
-		<div class="logo">
-			<a href="#">LiquorLog</a>
-		</div>
-	
-		<div class="profile">
-      
-			<a href="#">
-			<img src="images/profile.png" alt="Profile" class= "profile">
-
-			</a>
-			
-		</div>
-	</nav>
-
- 
 
 
-        <header>
+    </head>
+
+    <body>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <a href="#">LiquorLog </a>
+            </div>
+            <div class="profile">
+                <a href="#">
+                    <img src="images/profile.png" alt="Profile" class="profile">
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="container">
+            <div class="block">
+                <img src="images/welcome.png" alt="Welcome" class="block">
+            </div>
+
+            <div class="block">
+                <img src="images/graph.png" alt="Graph" class="block">
+            </div>
+
+        </div>
+
+        <div class="seemore">
+            <img src="images/seemore.png" alt="Welcome" class="block">
+        </div>
+
+
+        <div class="bodysection">
+            <div class="headingcontainer">
+                <h1> Activity</h1>
+
+
+                <div id="plus-button" class="button">
+                    <p>Add Drink</p>
+                </div>
+
+                <div class="button">
+                    <p>Your current BAC Level:</p>
+                    <p>0%</p>
+                </div>
+            </div>
+
+
+
+            <div class="activitysection">
+
+                <div class="activitybanner">
+                    <img src="images/drinkingchoices.png" alt="Welcome" class="drinkingchoice">
+
+                </div>
+
+                <div class="adddrink">
+                    <div class="subheading">
+                        <h2>Added</h2>
+                    </div>
+                    <div class="subheading">
+                        <p>Filter: All</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        </div>
+
+
+        <!-- <header>
             <h1>Task Tracker</h1>
             <h2> aaa</h2>
         </header>
@@ -87,6 +145,7 @@
         </form>
         <h2>Tasks</h2>
         <ul id="tasklist"></ul>
-        <script src="script.js"></script>
+        <script src="script.js"></script> -->
     </body>
+
 </html>
