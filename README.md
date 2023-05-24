@@ -8,3 +8,7 @@ links:
 https://www.w3schools.com/css/css3_shadows.asp
 https://css-tricks.com/almanac/properties/b/box-shadow/
 
+
+accordian js api
+https://codesandbox.io/s/a11y-dialog-v7-pnwqu?file=/src/styles.css
+https://a11y-dialog.netlify.app/usage/markup

@@ -125,7 +125,7 @@ html {
     padding-top: 15px;
     padding-left: 180px;
     padding-right: 180px;
-    padding-bottom: 25px;
+    padding-bottom: 40px;
   }
   
   .block img {
@@ -147,7 +147,7 @@ html {
   }
 
 .bodysection{
-  background-color: #eae3fc; 
+  background-color: #FAF8FF; 
   width: auto;
   height: 1500px;
   margin-left: 90px;
@@ -170,24 +170,39 @@ h1{
 }
 
 
-.button{
+.button1{
   padding-left: 20px;
   padding-right: 20px;
-  height: 40px;
+  height: 90px;
+  width: 135px;
   background-color: #FFFFFF; 
   align-items: center;
   display: flex;
   margin: 7px;
   font-size: 20px;
   border-radius: 10px;
-
+  box-shadow: 0 10px 6px -6px #777;  
 }
+
+.button2{
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 90px;
+  background-color: #FFFFFF; 
+  align-items: center;
+  display: flex;
+  margin: 7px;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 6px -6px #777;  
+}
+
 
 /* adds plus button after the page content loads */
 #plus-button::after {
   content: "+";
-  font-weight: bold;
-  font-size: 40px;
+  /* font-weight: bold; */
+  font-size: 30px;
 }
 
 .activitysection{
@@ -206,16 +221,21 @@ h1{
   width: 400px;
   /* height: 600px; */
   background-color: #FFFFFF; 
-  display: flex;
+  /* display: flex; */
   /* justify-content: center; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  box-shadow: 0 10px 6px -6px #777;  
 }
 
 
 
-/* .subheading{
- display: flex;
-} */
+.subheading {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
 /* 
 .bodycontainer{
   padding-left: 100px;
@@ -229,3 +249,5 @@ h1{
   width: auto;
   height: 500px;
 } */
+
+

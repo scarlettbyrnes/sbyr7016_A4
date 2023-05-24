@@ -10,11 +10,15 @@
   },
   "author": "Rob Dongas",
   "devDependencies": {
+    "@babel/core": "7.2.0",
     "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "parcel-bundler": "^1.6.1"
   },
   "dependencies": {
+    "a11y-dialog": "^7.5.2",
     "express": "^4.18.2",
+    "focusable-selectors": "0.3.0",
     "sass": "^1.62.0",
     "scss": "^0.2.4"
   }
