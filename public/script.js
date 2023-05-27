@@ -1,14 +1,114 @@
+// code from line 3 to 13 is an API  named a11y-dialog. referenced in README
+
 import A11yDialog from 'a11y-dialog'
+
+// overlay code 
 
 var dialogEl = document.getElementById('my-dialog')
 var dialog = new A11yDialog(dialogEl)
 
-// dialog.on('show', function (dialogEl, event) {
-//   // console.log(dialogEl)
-//   // console.log(event)
-// })
+dialog.on('show', function (dialogEl, event) {
+  // console.log(dialogEl)
+  // console.log(event)
+})
+
+// initalise values and store to local storage
 
 
+var radios = document.getElementsByName("seconds"); // list of radio buttons
+var val = localStorage.getItem('seconds'); // local storage value
+for(var i=0;i<radios.length;i++){
+  if(radios[i].value == val){
+      radios[i].checked = true; // marking the required radio as checked
+  }
+}
+
+const form = document.querySelector('form');
+const drinkContainer = document.getElementById('drinkContainer');
+
+function handleSubmit(event) {
+  event.preventDefault();
+  dialog.hide();
+
+  const name = document.getElementById('name').value;
+  const price = document.getElementById('price').value;
+  const location = document.getElementById('location').value;
+  let alcoholType = form.elements.alcoholType.value
+
+  const drink = {
+    name,
+    price,
+    location,
+    alcoholType
+  };
+
+  let drinks = JSON.parse(localStorage.getItem('drinks')) || [];
+  drinks.push(drink);
+
+  localStorage.setItem('drinks', JSON.stringify(drinks));
+
+  // console.log(JSON.stringify(drinks));
+
+  form.reset();
+
+  displayDrinks();
+  bacCalc();
+}
+
+function displayDrinks() {  
+  drinkContainer.innerHTML = ''; // Clear the drink container
+
+  const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
+
+  drinks.forEach((drink, index) => {
+    const drinkHTML = `
+      <div class="drink">
+        <p>Name: <span>${drink.name}</span></p>
+        <p>Price: $<span>${drink.price}</span></p>
+        <p>Location: <span>${drink.location}</span></p>
+        <p>Type: <span>${drink.alcoholType}</span></p>
+
+        <button class="delete-btn" data-index="${index}">&times;</button>
+      </div>
+    `;
+    drinkContainer.innerHTML += drinkHTML;
+  });
+
+  const deleteButtons = drinkContainer.getElementsByClassName('delete-btn');
+  Array.from(deleteButtons).forEach((button) => {
+    button.addEventListener('click', handleDelete);
+  });
+}
+
+function bacCalc() {
+  console.log(localStorage.getItem('drinks'))
+  let getDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
+  // let bacDrinksLevel = 0.02 * getDrinks.length();
+  // drinks.length();
+
+  // console.log(typeof(getDrinks));
+  
+  // const bacPercHtml = document.getElementById("baclevel");
+  // bacPercHtml.innerHTML = `${bacDrinksLevel}%`;
+
+
+
+}
+
+
+
+
+
+function handleDelete(event) {
+  const index = event.target.getAttribute('data-index');
+  let drinks = JSON.parse(localStorage.getItem('drinks')) || [];
+  drinks.splice(index, 1);
+  localStorage.setItem('drinks', JSON.stringify(drinks));
+  displayDrinks();
+}
+
+form.addEventListener('submit', handleSubmit);
+displayDrinks();
 
 
 
@@ -89,8 +189,7 @@ var dialog = new A11yDialog(dialogEl)
 // // console.log(task);
 
 
-// // Create an array called 'taskList'
-// var taskList = [];
+// // Create an array called 'taskList' var taskList = [];
 
 // // Create a function called 'addTask'
 // // Give the function input parameters for: name, type, rate, time, client

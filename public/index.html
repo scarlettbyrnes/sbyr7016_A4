@@ -53,7 +53,7 @@
             <div class="headingcontainer">
                 <h1> Activity</h1>
 
-
+            
                 <div id="plus-button" class="button1">
                     <button class="link-like" data-a11y-dialog-show="my-dialog">
                         Add drink
@@ -82,7 +82,7 @@
             ></path>
           </svg>
         </button>
-
+    
         <h1 id="my-dialog-title">Add Drink</h1>
 
         <!-- <p id="my-dialog-description">
@@ -90,49 +90,100 @@
         </p> -->
 
         <form>
-          <label for="email">Name</label>
+        
+        <div class="leftcontainer">
+        <div class="namecon">
+          <label for="name">Drink name</label>
           <input
-            type="email"
-            name="EMAIL"
-            id="email"
+            type="name"
+            name="NAME"
+            id="name"
             placeholder="e.g Corona"
             required
           />
+          </div>
 
-          <!-- <button type="submit" name="button">Submit</button> -->
-        </form>
+          <div class="pricecon">
 
-        <form>
-            <label for="email">Price</label>
+            <label for="price">Price</label>
             <input
-              type="email"
-              name="EMAIL"
-              id="email"
-              placeholder="e.g Corona"
+              type="price"
+              name="PRICE"
+              id="price"
+              placeholder="e.g $9"
               required
             />
+            </div>
   
-          </form>
+            <div class="locationcon">
 
-          <form>
-            <label for="email">Location</label>
+            <label for="location">Location</label>
             <input
-              type="email"
-              name="EMAIL"
-              id="email"
+              type="location"
+              name="LOCATION"
+              id="location"
               placeholder="e.g The Robbin Hood"
               required
             />
-            </form>
+            </div>
+            <button id="submit" type="submit" name="button">Submit
+            
 
-            <button type="submit" name="button">Submit</button>
+            </button>
+
+
+
+
+
+            </div>
+
+        
+
+
+            <div class="category">
+                <input type="radio" name="alcoholType" value="beer">Beer
+                <input type="radio" name="alcoholType" value="wine">Wine
+                <input type="radio" name="alcoholType" value="spirits">Spirits
+                <input type="radio" name="alcoholType" value="cocktails">Cocktails
+                <input type="radio" name="alcoholType" value="mocktails">Mocktails
+                <input type="radio" name="alcoholType" value="other">Other
+        
+                <!-- <div class="beer">
+                    <div class="beerheading"> <h3>Beer</h3> </div>
+                <img src="images/beer.png" alt="Beer" class="beerimg">
+                </div>
+                <div class="beer">
+                    <div class="wineheading"> <h3>Wine</h3> </div>
+                <img src="images/wine.png" alt="Wine" class="beerimg">
+                </div>
+                <div class="beer">
+                    <div class="spiritheading"> <h3>Spirits</h3> </div>
+                <img src="images/spirits.png" alt="Spirits" class="beerimg">
+                </div>
+                <div class="beer">
+                    <div class="beerheading"> <h3>Beer</h3> </div>
+                <img src="images/beer.png" alt="Beer" class="beerimg">
+                </div>
+                <div class="beer">
+                    <div class="beerheading"> <h3>Beer</h3> </div>
+                <img src="images/beer.png" alt="Beer" class="beerimg">
+                </div>
+                <div class="beer">
+                    <div class="beerheading"> <h3>Beer</h3> </div>
+                <img src="images/beer.png" alt="Beer" class="beerimg">
+                </div> -->
+
+            </div>
+
+            </form>
 
 
       </div>
     </div>
 
                 <div class="button2">
-                    <p>Your current BAC Level:<br /> 0%</p>
+                    <p>Your current BAC Level:<br> </p> 
+                    <p id="baclevel">0%</p>
                 </div>
             </div>
 
@@ -149,14 +200,23 @@
                     <div class="subheading">
                         <h2>Added</h2>
                         <p>Filter: All</p>
-                    </div>
+
+
+                   
 
                 </div>
+                <div id="drinkContainer" class="drink-container">
+                    <h2>Previously Uploaded Drinks:</h2>
+                  </div>
+                    </div>
 
             </div>
 
         </div>
 
+
+      
+    
 
         </div>
 

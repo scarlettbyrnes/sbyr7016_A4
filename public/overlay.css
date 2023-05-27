@@ -43,12 +43,14 @@
    * 2. Make sure the dialog sits on top of the overlay.
    * 3. Make sure the dialog has an opaque background.
    */
+
+
+  
  .dialog-content {
    margin: auto; /* 1 */
    z-index: 2; /* 2 */
    position: relative; /* 2 */
    background-color: #FAF7FF; /* 3 */
- 
    animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
    padding: 1em;
    max-width: 90%;
@@ -84,6 +86,7 @@
  .dialog-content h1 {
    margin: 0;
    font-size: 1.25em;
+   text-align: center;
  }
  
  .dialog-close {
@@ -119,16 +122,16 @@
  }
  
  body {
-   font: 125% / 1.5 -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-     sans-serif;
-   padding: 2em 0;
+   font: 125% / 1.5;
+     font-family: 'Rubik', sans-serif;
+   /* padding: 2em 0; */
  }
  
- h1 {
+ /* .my-dialog-title h1 {
    font-size: 1.6em;
    line-height: 1.1;
    text-align: center;
- }
+ } */
  
  h1 span {
    color: #e50050;
@@ -136,20 +139,20 @@
  
  h1,
  h2 {
-   font-family: 'ESPI Slab', sans-serif;
+   font-family: 'Rubik', sans-serif;
    margin-bottom: 0;
  }
  
  .link-like,
  a {
-   color: #2984c2;
+   color: black;
  }
  
  .link-like:hover,
  .link-like:active,
  a:hover,
  a:active {
-   color: #e50050;
+   color: grey;
  }
  
  /* -------------------------------------------------------------------------- *\
@@ -158,7 +161,7 @@
  
  .link-like {
    background-color: transparent;
-   text-decoration: underline;
+   /* text-decoration: underline; */
    border: 0;
    margin: 0;
    padding: 0;
@@ -187,40 +190,74 @@
  
  form {
    margin-top: 1em;
+   font-family: 'Rubik', sans-serif;
+
  }
  
  @media screen and (min-width: 700px) {
    form {
      display: flex;
      flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+
+   }
+
+   form > * {
+    flex: 1;
    }
  }
  
- form label {
+ /* form label {
    font-weight: bold;
    margin: 5px 10px 5px 0;
    vertical-align: middle;
    flex: 1 0 100%;
- }
+ } */
+
+ /* this section of code is taken from a website. referenced in README */
+ label {
+  display: flex;
+  flex-direction: column-reverse;
+  border-bottom: 1px solid black;
+  margin-bottom: 9px;
+}
+label>span {
+  transition: all .2s;
+  transform-origin: top left;
+}
+label>input[placeholder=" "]:not(:focus):placeholder-shown + span {
+  transform: translateY(1em) scale(1.25);
+  pointer-events: none;
+  opacity: .5
+}
+
+
+
  
  form input {
-   font: inherit;
-   padding: 0.25em;
-   border: 1px solid #81c784;
+   font-family: 'Rubik', sans-serif;
+   padding: 0.95em;
+   border: 0.0px solid black;
    width: 100%;
    margin: 0.25em 0 1em;
+   border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-style: italic;
+  box-shadow: 0 10px 6px -6px #d3d3d3;  
+
  }
  
  @media screen and (min-width: 700px) {
    form input {
-     flex: 1;
-     border-right: 0;
+     /* flex: 0.5; */
      width: auto;
-     margin: 0;
+     /* margin: 0; */
    }
  }
  
- form button {
+ /* form button {
    background-color: #81c784;
    color: white;
    border: 0;
@@ -230,17 +267,135 @@
    cursor: pointer;
    transition: 0.15s;
    display: inline-block;
- }
+ } */
  
- form button:hover,
+ /* form button:hover,
  form button:active {
    background-color: #66bb6a;
- }
+ } */
  
-button {
+button#submit {
 color: #FFFFFF;
-width: 70px;
-height: 40px;
+width: 100px;
+height: 35px;
 background-color: #78669A;
+/* padding: 8px 15px; */
+cursor: pointer;
+transition: 0.15s;
+display: inline-block;
+font-weight: bold;
+font-family: 'Rubik', sans-serif;
+border-radius: 10px;
+/* margin-top: 20px; */
+font-size: 17px;
 }
- 
+
+
+button {
+  /* background-color: #e50050; */
+  /* display: flex; */
+}
+
+
+h3{
+  margin: 0;
+}
+
+/* button :hover{
+  background-color: #4e4264;
+} */
+
+
+.category{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  /* box-shadow: 0 10px 6px -6px #d3d3d3;   */
+  flex-direction: column;
+  overflow: scroll;
+  height: 400px;
+  align-items: center;
+  margin-right: 50px;
+
+}
+
+.beer{
+  width: 175px;
+  height: 150px; 
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  /* padding: 20px; */
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 6px -6px #d3d3d3;  
+}
+
+.beerheading h3 {
+  background-color: #FFE4D0;
+  font-size: 20px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.wineheading h3 {
+  background-color: #EBC6FC;
+  font-size: 20px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.spiritheading h3 {
+  background-color: #CCE0A0;
+  font-size: 20px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+
+
+
+
+
+
+.beerimg {
+  width: 100px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+
+
+
+.leftcontainer{
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.namecon {
+  padding: 10px;
+}
+
+.pricecon {
+  padding: 10px;
+}
+
+.locationcon {
+  padding: 10px;
+}
