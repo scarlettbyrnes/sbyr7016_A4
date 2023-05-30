@@ -1,3 +1,6 @@
+// import BeerIcon from './images/beericon.png'
+
+
 // code from line 3 to 13 is an API  named a11y-dialog. referenced in README
 
 import A11yDialog from 'a11y-dialog'
@@ -14,14 +17,16 @@ dialog.on('show', function (dialogEl, event) {
 
 // initalise values and store to local storage
 
+// var radios = document.getElementsByName("seconds"); // list of radio buttons
+// var val = localStorage.getItem('seconds'); // local storage value
+// for(var i=0;i<radios.length;i++){
+//   if(radios[i].value == val){
+//       radios[i].checked = true; // marking the required radio as checked
+//   }
+// }
 
-var radios = document.getElementsByName("seconds"); // list of radio buttons
-var val = localStorage.getItem('seconds'); // local storage value
-for(var i=0;i<radios.length;i++){
-  if(radios[i].value == val){
-      radios[i].checked = true; // marking the required radio as checked
-  }
-}
+
+// initalise values and store to local storage
 
 const form = document.querySelector('form');
 const drinkContainer = document.getElementById('drinkContainer');
@@ -34,12 +39,26 @@ function handleSubmit(event) {
   const price = document.getElementById('price').value;
   const location = document.getElementById('location').value;
   let alcoholType = form.elements.alcoholType.value
+//   let imagePath = "";
+  
+
+// // if / else statement to check 
+//   if (alcoholType == 'beer') {
+//     imagePath = "public/images/beericon.png"
+//   }
+//   else if (alcoholType == 'spirits') {
+//     imagePath = 'public/images/spiriticon.png'
+//   }
+//   else if (alcoholType == 'wine') {
+//     imagePath = 'public/images/wineicon.png'
+//   }
 
   const drink = {
     name,
     price,
     location,
-    alcoholType
+    alcoholType,
+    imagePath,
   };
 
   let drinks = JSON.parse(localStorage.getItem('drinks')) || [];
@@ -60,19 +79,32 @@ function displayDrinks() {
 
   const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
 
+
+  // innherhtml 
   drinks.forEach((drink, index) => {
+    // console.log(drink.imagePath)
     const drinkHTML = `
       <div class="drink">
         <p>Name: <span>${drink.name}</span></p>
         <p>Price: $<span>${drink.price}</span></p>
         <p>Location: <span>${drink.location}</span></p>
         <p>Type: <span>${drink.alcoholType}</span></p>
-
         <button class="delete-btn" data-index="${index}">&times;</button>
       </div>
     `;
+  //   const div = document.createElement("div")
+  //   div.className("drink")
+  //   let image = new Image (150,150)
+  //   if (alcoholType == "beer") {
+  //     image.src = BeerIcon
+  //   }
+  // div.appendChild(image)
+  // div.appendChild(drinkHTML)
+    
     drinkContainer.innerHTML += drinkHTML;
   });
+
+    // console.log(drink.imagePath)
 
   const deleteButtons = drinkContainer.getElementsByClassName('delete-btn');
   Array.from(deleteButtons).forEach((button) => {
@@ -80,25 +112,21 @@ function displayDrinks() {
   });
 }
 
+// this function gets the drinks and finds the len of array. I used
+// an average of 0.02 for every drink (even if this isnt completely accurate)
+// as it minimises me finding the BAC for every single drink. 
 function bacCalc() {
-  console.log(localStorage.getItem('drinks'))
   let getDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
-  // let bacDrinksLevel = 0.02 * getDrinks.length();
-  // drinks.length();
+ 
+  let bacDrinksLevel = 0.02 * getDrinks.length;
 
-  // console.log(typeof(getDrinks));
-  
-  // const bacPercHtml = document.getElementById("baclevel");
-  // bacPercHtml.innerHTML = `${bacDrinksLevel}%`;
-
-
-
+  // uses the id from html (baclevel) and updates it when a drink is added
+  const bacPercHtml = document.getElementById("baclevel");
+  bacPercHtml.innerHTML = `${bacDrinksLevel}%`;
 }
 
-
-
-
-
+// handles local storage and 'splices' / deletes it from local storage 
+// recalls displayDrinks function to update the delete 
 function handleDelete(event) {
   const index = event.target.getAttribute('data-index');
   let drinks = JSON.parse(localStorage.getItem('drinks')) || [];
@@ -109,6 +137,7 @@ function handleDelete(event) {
 
 form.addEventListener('submit', handleSubmit);
 displayDrinks();
+bacCalc()
 
 
 

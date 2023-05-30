@@ -143,31 +143,39 @@
    margin-bottom: 0;
  }
  
- .link-like,
+ .button1,
  a {
    color: black;
  }
  
- .link-like:hover,
- .link-like:active,
+ .button1:hover,
+ .button1:active,
  a:hover,
  a:active {
-   color: grey;
+   color: #4D3678;
  }
  
+ /* input[type="radio"] {
+  display: none;
+  &:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+  &:disabled ~ label {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+} */
+
+
+
+
+
  /* -------------------------------------------------------------------------- *\
   * Helpers
   * -------------------------------------------------------------------------- */
- 
- .link-like {
-   background-color: transparent;
-   /* text-decoration: underline; */
-   border: 0;
-   margin: 0;
-   padding: 0;
-   font: inherit;
-   cursor: pointer;
- }
+
  
  /* -------------------------------------------------------------------------- *\
   * Layout
@@ -216,7 +224,7 @@
  } */
 
  /* this section of code is taken from a website. referenced in README */
- label {
+ .leftcontainer label {
   display: flex;
   flex-direction: column-reverse;
   border-bottom: 1px solid black;
@@ -257,6 +265,14 @@ label>input[placeholder=" "]:not(:focus):placeholder-shown + span {
    }
  }
  
+ .category label {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 9px;
+}
+
+
+
  /* form button {
    background-color: #81c784;
    color: white;
@@ -291,32 +307,23 @@ font-size: 17px;
 }
 
 
-button {
-  /* background-color: #e50050; */
-  /* display: flex; */
-}
-
 
 h3{
   margin: 0;
 }
 
-/* button :hover{
-  background-color: #4e4264;
-} */
 
 
 .category{
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  /* padding: 15px; */
   /* box-shadow: 0 10px 6px -6px #d3d3d3;   */
   flex-direction: column;
   overflow: scroll;
-  height: 400px;
+  height: 350px;
   align-items: center;
-  margin-right: 50px;
-
+  /* margin-right: 50px; */
 }
 
 .beer{
@@ -332,15 +339,18 @@ h3{
   box-shadow: 0 10px 6px -6px #d3d3d3;  
 }
 
-.beerheading h3 {
+.beerheading h3{
   background-color: #FFE4D0;
+  border-radius: 10px;
   font-size: 20px;
   align-content: center;
-  border-radius: 10px;
   text-align: center;
   padding-bottom: 5px;
   padding-top: 5px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
+
 
 .wineheading h3 {
   background-color: #EBC6FC;
@@ -350,6 +360,8 @@ h3{
   text-align: center;
   padding-bottom: 5px;
   padding-top: 5px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .spiritheading h3 {
@@ -360,17 +372,51 @@ h3{
   text-align: center;
   padding-bottom: 5px;
   padding-top: 5px;
+  padding-left: 53px;
+  padding-right: 53px;
+}
+
+.cocktailheading h3 {
+  background-color: #FCF6B1;
+  font-size: 20px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 41px;
+  padding-right: 41px;
+}
+
+.champheading h3 {
+  background-color: #bae4f3;
+  font-size: 20px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.otherheading h3 {
+  background-color: #EFE9F4;
+  font-size: 20px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 57px;
+  padding-right: 57px;
 }
 
 
 
-
-
-
-
 .beerimg {
-  width: 100px;
-  height: auto;
+  width: 140px;
+  height: 110px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -398,4 +444,63 @@ h3{
 
 .locationcon {
   padding: 10px;
+}
+
+
+
+/* radio button css */
+/* 
+.radio-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  flex-direction: column;
+  overflow: scroll;
+  height: 400px;
+  align-items: center;
+  margin-right: 50px;
+  margin: 5px;
+}
+.radio-button input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.radio-button label {
+  display: flex;
+  background-color: white;
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: 0 10px 6px -6px #d3d3d3;  
+  margin-bottom: 20px;
+}
+.radio-button label:hover {
+  background-color: #b1e3c1;
+}
+.radio-button input[type="radio"]:focus + label {
+  border: 2px dashed #666;
+}
+.radio-button input[type="radio"]:checked + label {
+  background-color: #76cf9f;
+  border-color: #666;
+} */
+
+
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
 }

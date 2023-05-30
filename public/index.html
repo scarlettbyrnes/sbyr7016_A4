@@ -54,10 +54,8 @@
                 <h1> Activity</h1>
 
             
-                <div id="plus-button" class="button1">
-                    <button class="link-like" data-a11y-dialog-show="my-dialog">
-                        Add drink
-                    </button>
+                <div id="plus-button" class="button1" data-a11y-dialog-show="my-dialog">
+                    Add drink +
                 </div>
 
          <!-- overlay -->
@@ -132,22 +130,87 @@
             </button>
 
 
-
-
-
             </div>
 
         
 
 
             <div class="category">
-                <input type="radio" name="alcoholType" value="beer">Beer
-                <input type="radio" name="alcoholType" value="wine">Wine
-                <input type="radio" name="alcoholType" value="spirits">Spirits
-                <input type="radio" name="alcoholType" value="cocktails">Cocktails
-                <input type="radio" name="alcoholType" value="mocktails">Mocktails
-                <input type="radio" name="alcoholType" value="other">Other
-        
+                <div class ="radio-button">
+                <!-- <input type="radio" name="alcoholType" id="radio1" value="beer">Beer
+
+                <input type="radio" name="alcoholType" id="radio1" value="wine">Wine
+
+                <input type="radio" name="alcoholType" id="radio1" value="spirits">Spirits
+
+                <input type="radio" name="alcoholType" id="radio1" value="cocktails">Cocktails
+
+                <input type="radio" name="alcoholType" id="radio1" value="mocktails">Mocktails
+
+                <input type="radio" name="alcoholType" id="radio1" value="other">Other -->
+
+                
+                <!-- <label>
+                    <input type="radio" id="radio1" name="alcoholType" value="beer">
+                    <img src="images/beer.png" alt="Beer" class="beerimg">
+                
+                </label> -->
+
+
+                <label>
+                <input type="radio" id="radio1" name="alcoholType" value="beer">
+                <img src="images/beercon.png" alt="Beer" class="beerimg">
+                </label>
+
+                <!-- <input type="radio" id="radio2" name="alcoholType" value="wine">
+                <label for="radio2">Wine</label>
+                <input type="radio" id="radio3" name="alcoholType" value="spirits">
+                <label for="radio3">Spirits</label> 
+                <input type="radio" id="radio4" name="alcoholType" value="cocktails">
+                <label for="radio4">Cocktails</label>
+                <input type="radio" id="radio5" name="alcoholType" value="mocktails">
+                <label for="radio5">Mocktails</label>
+                <input type="radio" id="radio6" name="alcoholType" value="other">
+                <label for="radio6">Other</label>  -->
+
+
+                <label>
+                    <input type="radio" id="radio2" name="alcoholType" value="wine">
+                    <img src="images/wine.png" alt="Wine" class="beerimg">
+                    </label>
+    
+                <label>
+                    <input type="radio" id="radio3" name="alcoholType" value="spirits">
+                    <img src="images/spirits.png" alt="Spirits" class="beerimg">
+                    </label> 
+    
+                <label>
+                    <input type="radio" id="radio4" name="alcoholType" value="cocktails">
+                    <img src="images/cocktail.png" alt="Cocktails" class="beerimg">
+                    </label>
+                
+    
+                <label>
+                    <input type="radio" id="radio5" name="alcoholType" value="champagne">
+                    <img src="images/champ.png" alt="Champagne" class="beerimg">
+                    </label>
+    
+                <label>
+                    <input type="radio" id="radio6" name="alcoholType" value="other">
+                    <img src="images/other.png" alt="Other" class="beerimg">
+                    </label> 
+    
+
+
+
+
+            </div>
+
+
+
+
+
+
                 <!-- <div class="beer">
                     <div class="beerheading"> <h3>Beer</h3> </div>
                 <img src="images/beer.png" alt="Beer" class="beerimg">
@@ -181,8 +244,8 @@
       </div>
     </div>
 
-                <div class="button2">
-                    <p>Your current BAC Level:<br> </p> 
+                <div class="bac">
+                    <p>Your current BAC Level:</p> 
                     <p id="baclevel">0%</p>
                 </div>
             </div>
@@ -278,7 +341,7 @@
         <h2>Tasks</h2>
         <ul id="tasklist"></ul>
         <script src="script.js"></script> -->
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
     </body>
 
 </html>
