@@ -229,11 +229,7 @@ h1{
   padding-right: 20px;
   border-radius: 25px;
   width: 400px;
-  /* height: 600px; */
   background-color: #FFFFFF; 
-  /* display: flex; */
-  /* justify-content: center; */
-  /* justify-content: space-between; */
   box-shadow: 0 10px 6px -6px #d3d3d3;  
 }
 
@@ -252,11 +248,13 @@ h1{
 .drink-container {
   padding: 10px;
   overflow: scroll;
-  height: 500px;
+  height: 550px;
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
+  flex-direction: column;
+  /* margin-top: 20px; */
 }
+
+
 
 .drink-container h2 {
   margin-top: 0;
@@ -276,10 +274,15 @@ h1{
 .drink p {
   margin: 0;
   font-weight: bold;
+  
 }
 
 .drink span {
   font-weight: normal;
 }
 
+.namecss p{
+  display: flex;
+
+}
 

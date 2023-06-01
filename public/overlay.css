@@ -127,12 +127,6 @@
    /* padding: 2em 0; */
  }
  
- /* .my-dialog-title h1 {
-   font-size: 1.6em;
-   line-height: 1.1;
-   text-align: center;
- } */
- 
  h1 span {
    color: #e50050;
  }
@@ -154,28 +148,10 @@
  a:active {
    color: #4D3678;
  }
- 
- /* input[type="radio"] {
-  display: none;
-  &:not(:disabled) ~ label {
-    cursor: pointer;
-  }
-  &:disabled ~ label {
-    color: hsla(150, 5%, 75%, 1);
-    border-color: hsla(150, 5%, 75%, 1);
-    box-shadow: none;
-    cursor: not-allowed;
-  }
-} */
-
-
-
-
 
  /* -------------------------------------------------------------------------- *\
   * Helpers
   * -------------------------------------------------------------------------- */
-
  
  /* -------------------------------------------------------------------------- *\
   * Layout
@@ -208,7 +184,6 @@
      flex-wrap: wrap;
     flex-direction: row;
     align-content: flex-start;
-
    }
 
    form > * {
@@ -216,12 +191,6 @@
    }
  }
  
- /* form label {
-   font-weight: bold;
-   margin: 5px 10px 5px 0;
-   vertical-align: middle;
-   flex: 1 0 100%;
- } */
 
  /* this section of code is taken from a website. referenced in README */
  .leftcontainer label {

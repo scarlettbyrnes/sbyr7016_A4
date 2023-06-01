@@ -1,5 +1,4 @@
-// import BeerIcon from './images/beericon.png'
-
+import images from './images/*.png'
 
 // code from line 3 to 13 is an API  named a11y-dialog. referenced in README
 
@@ -17,17 +16,6 @@ dialog.on('show', function (dialogEl, event) {
 
 // initalise values and store to local storage
 
-// var radios = document.getElementsByName("seconds"); // list of radio buttons
-// var val = localStorage.getItem('seconds'); // local storage value
-// for(var i=0;i<radios.length;i++){
-//   if(radios[i].value == val){
-//       radios[i].checked = true; // marking the required radio as checked
-//   }
-// }
-
-
-// initalise values and store to local storage
-
 const form = document.querySelector('form');
 const drinkContainer = document.getElementById('drinkContainer');
 
@@ -39,19 +27,42 @@ function handleSubmit(event) {
   const price = document.getElementById('price').value;
   const location = document.getElementById('location').value;
   let alcoholType = form.elements.alcoholType.value
-//   let imagePath = "";
-  
 
-// // if / else statement to check 
-//   if (alcoholType == 'beer') {
-//     imagePath = "public/images/beericon.png"
-//   }
-//   else if (alcoholType == 'spirits') {
-//     imagePath = 'public/images/spiriticon.png'
-//   }
-//   else if (alcoholType == 'wine') {
-//     imagePath = 'public/images/wineicon.png'
-//   }
+  let imagePath = "";
+
+  if (alcoholType == 'beer') {
+    imagePath = images.beericon
+  }
+  else if (alcoholType == 'spirits') {
+    imagePath = images.spiriticon
+  }
+  else if (alcoholType == 'wine') {
+    imagePath = images.wineicon
+  }
+  else if (alcoholType == 'cocktails') {
+    imagePath = images.cocktailicon
+  }
+  else if (alcoholType == 'champagne') {
+    imagePath = images.champicon
+  }
+  else if (alcoholType == 'other') {
+    imagePath = images.othericon
+  }
+
+
+  let objectDate = new Date();
+
+  let day = objectDate.getDate();
+  console.log(day); // 23
+  
+  let month = objectDate.getMonth();
+  console.log(month + 1); // 8
+  
+  let year = objectDate.getFullYear();
+  console.log(year); // 2022
+
+  let dateFormat = day + "/" + month + "/" + year;
+
 
   const drink = {
     name,
@@ -59,13 +70,13 @@ function handleSubmit(event) {
     location,
     alcoholType,
     imagePath,
+    dateFormat
   };
 
   let drinks = JSON.parse(localStorage.getItem('drinks')) || [];
   drinks.push(drink);
 
   localStorage.setItem('drinks', JSON.stringify(drinks));
-
   // console.log(JSON.stringify(drinks));
 
   form.reset();
@@ -78,33 +89,28 @@ function displayDrinks() {
   drinkContainer.innerHTML = ''; // Clear the drink container
 
   const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
-
+  
+  // reverse array (my original drinks section wasnt scrolling & was in the 
+  // incorrect order, the toReversed function was advice from Rob)
+  let reverseDrinks = drinks.toReversed()
 
   // innherhtml 
-  drinks.forEach((drink, index) => {
+  reverseDrinks.forEach((drink, index) => {
     // console.log(drink.imagePath)
     const drinkHTML = `
       <div class="drink">
-        <p>Name: <span>${drink.name}</span></p>
-        <p>Price: $<span>${drink.price}</span></p>
-        <p>Location: <span>${drink.location}</span></p>
-        <p>Type: <span>${drink.alcoholType}</span></p>
+        <img src='${drink.imagePath}' width=40 height=40 />
+        <p><span class="drinkcss">${drink.name}</span></p>
+        <p>$<span class="pricecss">${drink.price}</span></p>
+        <p>210 calories<p>
+        <p><span class="datecss">${drink.dateFormat}</span></p>
         <button class="delete-btn" data-index="${index}">&times;</button>
       </div>
     `;
-  //   const div = document.createElement("div")
-  //   div.className("drink")
-  //   let image = new Image (150,150)
-  //   if (alcoholType == "beer") {
-  //     image.src = BeerIcon
-  //   }
-  // div.appendChild(image)
-  // div.appendChild(drinkHTML)
-    
+
     drinkContainer.innerHTML += drinkHTML;
   });
 
-    // console.log(drink.imagePath)
 
   const deleteButtons = drinkContainer.getElementsByClassName('delete-btn');
   Array.from(deleteButtons).forEach((button) => {
