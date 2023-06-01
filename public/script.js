@@ -100,11 +100,22 @@ function displayDrinks() {
     const drinkHTML = `
       <div class="drink">
         <img src='${drink.imagePath}' width=40 height=40 />
-        <p><span class="drinkcss">${drink.name}</span></p>
-        <p>$<span class="pricecss">${drink.price}</span></p>
-        <p>210 calories<p>
-        <p><span class="datecss">${drink.dateFormat}</span></p>
+        <div class="layout">
+
+        <div class="lineone">
+        <p class="drinkcss"><strong><span>${drink.name}</span></strong></p>
+        <p class="pricecss">$<span>${drink.price}</span></p>
+        </div>
+        
+        <div class="linetwo">
+        <p class="calcss">210 calories<p>
+        <p class="datecss"><span>${drink.dateFormat}</span></p>
+        </div>
+
+        </div>
         <button class="delete-btn" data-index="${index}">&times;</button>
+    
+
       </div>
     `;
 
