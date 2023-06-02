@@ -1,5 +1,6 @@
 import images from './images/*.png'
 
+
 // code from line 3 to 13 is an API  named a11y-dialog. referenced in README
 
 import A11yDialog from 'a11y-dialog'
@@ -49,19 +50,15 @@ function handleSubmit(event) {
     imagePath = images.othericon
   }
 
-
+// finding date section using new Date
   let objectDate = new Date();
 
   let day = objectDate.getDate();
-  console.log(day); // 23
-  
-  let month = objectDate.getMonth();
-  console.log(month + 1); // 8
-  
+  let month = objectDate.toLocaleString('default', { month: 'short' });
+  // let month = objectDate.getMonth();
   let year = objectDate.getFullYear();
-  console.log(year); // 2022
 
-  let dateFormat = day + "/" + month + "/" + year;
+  let dateFormat = day + ", " + month + ", " + year;
 
 
   const drink = {
@@ -101,7 +98,8 @@ function displayDrinks() {
       <div class="drink">
         <img src='${drink.imagePath}' width=40 height=40 />
         <div class="layout">
-
+        
+       
         <div class="lineone">
         <p class="drinkcss"><strong><span>${drink.name}</span></strong></p>
         <p class="pricecss">$<span>${drink.price}</span></p>
@@ -112,7 +110,9 @@ function displayDrinks() {
         <p class="datecss"><span>${drink.dateFormat}</span></p>
         </div>
 
+        
         </div>
+
         <button class="delete-btn" data-index="${index}">&times;</button>
     
 
@@ -278,5 +278,4 @@ bacCalc()
 
 // // Log the array to the console.
 // console.log(taskList);
-
 
