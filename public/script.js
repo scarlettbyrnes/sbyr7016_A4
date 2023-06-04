@@ -1,4 +1,62 @@
 import images from './images/*.png'
+import * as echarts from 'echarts';
+
+// create variables for chart
+
+
+let drinksAdded = document.querySelectorAll('.drink').length;
+// console.log(drinksAdded);
+
+// pricecss > span gets all elements and get the span child
+// .reduce (iterates through)
+// +variable adds a number to a string // allows me to add strings together
+// 
+const drinkPrices =  Array.from(document.querySelectorAll('.pricecss > span'));
+
+let priceAdded = drinkPrices.reduce((accumulator, drink) => {
+    return +accumulator + +drink.textContent;
+  }, 0)
+
+
+  const calValues =  Array.from(document.querySelectorAll('.calcss > span'));
+  
+  let addedCals = calValues.reduce((accumulator, drink) => {
+      return +accumulator + +drink.textContent;
+    }, 0)
+
+    let newCals = addedCals / 4;
+
+// Create the echarts instance
+var myChart = echarts.init(document.getElementById('pieChart'));
+
+var trackData = [drinksAdded, newCals, priceAdded]
+option = {
+    color:['#752EFE', '#FE724D', '#FDBE01'],
+    angleAxis: {
+        show: false,
+         max: 500 //the maxium value for one circle
+    },
+    radiusAxis: {
+        show: false,
+        type: 'category',
+        data: ['Drinks','Calories', 'Money']
+    },
+    polar: {},
+    series: [{
+        type: 'bar',
+        data: trackData,
+        colorBy: 'data',
+        roundCap: true,
+        label: {
+            show: true,
+            // Try changing it to 'insideStart'
+            position: 'start',
+            formatter: '{b}'
+        },
+        coordinateSystem: 'polar'
+    
+    }]
+};
 
 
 // code from line 3 to 13 is an API  named a11y-dialog. referenced in README
@@ -30,27 +88,34 @@ function handleSubmit(event) {
   let alcoholType = form.elements.alcoholType.value
 
   let imagePath = "";
+  let calories = "";
 
   if (alcoholType == 'beer') {
     imagePath = images.beericon
+    calories = "150"
   }
   else if (alcoholType == 'spirits') {
     imagePath = images.spiriticon
+    calories = "97"
   }
   else if (alcoholType == 'wine') {
     imagePath = images.wineicon
+    calories = "90"
   }
   else if (alcoholType == 'cocktails') {
     imagePath = images.cocktailicon
+    calories = "170"
   }
   else if (alcoholType == 'champagne') {
     imagePath = images.champicon
+    calories = "80"
   }
   else if (alcoholType == 'other') {
     imagePath = images.othericon
+    calories = "120"
   }
 
-// finding date section using new Date
+  // finding date section using new Date
   let objectDate = new Date();
 
   let day = objectDate.getDate();
@@ -60,6 +125,16 @@ function handleSubmit(event) {
 
   let dateFormat = day + ", " + month + ", " + year;
 
+  const currentDate = new Date();
+
+  const currentHour = currentDate.getHours();
+  const currentMinute = currentDate.getMinutes();
+  
+
+  let timeFormat = currentHour + ":" + currentMinute;
+
+
+
 
   const drink = {
     name,
@@ -67,7 +142,9 @@ function handleSubmit(event) {
     location,
     alcoholType,
     imagePath,
-    dateFormat
+    dateFormat,
+    calories,
+    timeFormat
   };
 
   let drinks = JSON.parse(localStorage.getItem('drinks')) || [];
@@ -82,11 +159,11 @@ function handleSubmit(event) {
   bacCalc();
 }
 
-function displayDrinks() {  
+function displayDrinks() {
   drinkContainer.innerHTML = ''; // Clear the drink container
 
   const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
-  
+
   // reverse array (my original drinks section wasnt scrolling & was in the 
   // incorrect order, the toReversed function was advice from Rob)
   let reverseDrinks = drinks.toReversed()
@@ -96,37 +173,40 @@ function displayDrinks() {
     // console.log(drink.imagePath)
     const drinkHTML = `
       <div class="drink">
-        <img src='${drink.imagePath}' width=40 height=40 />
-        <div class="layout">
-        
-       
-        <div class="lineone">
-        <p class="drinkcss"><strong><span>${drink.name}</span></strong></p>
-        <p class="pricecss">$<span>${drink.price}</span></p>
-        </div>
-        
-        <div class="linetwo">
-        <p class="calcss">210 calories<p>
-        <p class="datecss"><span>${drink.dateFormat}</span></p>
-        </div>
+      <img src='${drink.imagePath}' width=40 height=40 />
 
-        
-        </div>
-
-        <button class="delete-btn" data-index="${index}">&times;</button>
-    
-
+      <div id="faq">
+        <ul>
+          <li>
+            <input type="checkbox" checked>
+            <div class="layout">
+              <div class="lineone">
+                <p class="drinkcss"><strong><span>${drink.name}</span></strong></p>
+                <p class="pricecss">$<span>${drink.price}</span></p>
+              </div>
+              <div class="linetwo">
+                <p class="calcss"><span>${drink.calories}</span> calories<p>
+                <p class="datecss"><span>${drink.dateFormat}</span></p>
+              </div>
+            </div>
+            <p class="loccss">Location: <span>${drink.location}</span></p>
+            <p class="loccss">Location: <span>${drink.timeFormat}</span></p>
+          </li>
+        </ul>
       </div>
+      <button class="delete-btn" data-index="${index}">&times;</button>
+     </div>
     `;
 
     drinkContainer.innerHTML += drinkHTML;
   });
-
-
+  
+  
   const deleteButtons = drinkContainer.getElementsByClassName('delete-btn');
   Array.from(deleteButtons).forEach((button) => {
     button.addEventListener('click', handleDelete);
   });
+  myChart.setOption(option);
 }
 
 // this function gets the drinks and finds the len of array. I used
@@ -134,7 +214,7 @@ function displayDrinks() {
 // as it minimises me finding the BAC for every single drink. 
 function bacCalc() {
   let getDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
- 
+
   let bacDrinksLevel = 0.02 * getDrinks.length;
 
   // uses the id from html (baclevel) and updates it when a drink is added
@@ -150,11 +230,17 @@ function handleDelete(event) {
   drinks.splice(index, 1);
   localStorage.setItem('drinks', JSON.stringify(drinks));
   displayDrinks();
+  
 }
 
 form.addEventListener('submit', handleSubmit);
 displayDrinks();
 bacCalc()
+
+
+
+
+
 
 
 

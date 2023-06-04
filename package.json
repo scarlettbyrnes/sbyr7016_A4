@@ -11,8 +11,10 @@
   "author": "Rob Dongas",
   "devDependencies": {
     "@babel/core": "7.2.0",
+    "@parcel/resolver-glob": "^2.9.1",
     "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "^2.8.3",
+    "buffer": "^6.0.3",
+    "parcel": "^2.9.1",
     "parcel-bundler": "^1.6.1"
   },
   "dependencies": {
