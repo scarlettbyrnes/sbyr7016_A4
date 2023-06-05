@@ -1,66 +1,4 @@
 import images from './images/*.png'
-import * as echarts from 'echarts';
-
-// create variables for chart
-
-
-let drinksAdded = document.querySelectorAll('.drink').length;
-// console.log(drinksAdded);
-
-// pricecss > span gets all elements and get the span child
-// .reduce (iterates through)
-// +variable adds a number to a string // allows me to add strings together
-// 
-const drinkPrices =  Array.from(document.querySelectorAll('.pricecss > span'));
-
-let priceAdded = drinkPrices.reduce((accumulator, drink) => {
-    return +accumulator + +drink.textContent;
-  }, 0)
-
-
-  const calValues =  Array.from(document.querySelectorAll('.calcss > span'));
-  
-  let addedCals = calValues.reduce((accumulator, drink) => {
-      return +accumulator + +drink.textContent;
-    }, 0)
-
-    let newCals = addedCals / 4;
-
-// Create the echarts instance
-var myChart = echarts.init(document.getElementById('pieChart'));
-
-var trackData = [drinksAdded, newCals, priceAdded]
-option = {
-    color:['#752EFE', '#FE724D', '#FDBE01'],
-    angleAxis: {
-        show: false,
-         max: 500 //the maxium value for one circle
-    },
-    radiusAxis: {
-        show: false,
-        type: 'category',
-        data: ['Drinks','Calories', 'Money']
-    },
-    polar: {},
-    series: [{
-        type: 'bar',
-        data: trackData,
-        colorBy: 'data',
-        roundCap: true,
-        label: {
-            show: true,
-            // Try changing it to 'insideStart'
-            position: 'start',
-            formatter: '{b}'
-        },
-        coordinateSystem: 'polar'
-    
-    }]
-};
-
-
-// code from line 3 to 13 is an API  named a11y-dialog. referenced in README
-
 import A11yDialog from 'a11y-dialog'
 
 // overlay code 
@@ -133,9 +71,6 @@ function handleSubmit(event) {
 
   let timeFormat = currentHour + ":" + currentMinute;
 
-
-
-
   const drink = {
     name,
     price,
@@ -157,6 +92,9 @@ function handleSubmit(event) {
 
   displayDrinks();
   bacCalc();
+  drinkCalc();
+  calCalc();
+  priceCalc();
 }
 
 function displayDrinks() {
@@ -206,7 +144,6 @@ function displayDrinks() {
   Array.from(deleteButtons).forEach((button) => {
     button.addEventListener('click', handleDelete);
   });
-  myChart.setOption(option);
 }
 
 // this function gets the drinks and finds the len of array. I used
@@ -222,6 +159,45 @@ function bacCalc() {
   bacPercHtml.innerHTML = `${bacDrinksLevel}%`;
 }
 
+function drinkCalc() {
+  let getDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
+
+  let drinkNum = 0 + getDrinks.length;
+
+  // uses the id from html (baclevel) and updates it when a drink is added
+  const drinkNumHtml = document.getElementById("drinkNum");
+  drinkNumHtml.innerHTML = `${drinkNum}`;
+}
+
+function calCalc() {
+  const calValues =  Array.from(document.querySelectorAll('.calcss > span'));
+  let addedCals = calValues.reduce((accumulator, drink) => {
+    return +accumulator + +drink.textContent;
+  }, 0)
+
+  const calNumHtml = document.getElementById("calNum");
+  calNumHtml.innerHTML = `${addedCals} calories`; 
+}
+
+function priceCalc() {
+  const drinkPrices =  Array.from(document.querySelectorAll('.pricecss > span'));
+
+  let priceAdded = drinkPrices.reduce((accumulator, drink) => {
+      return +accumulator + +drink.textContent;
+    }, 0)
+
+    const priceNumHtml = document.getElementById("priceNum");
+    priceNumHtml.innerHTML = `$${priceAdded}`; 
+}
+
+// const calValues =  Array.from(document.querySelectorAll('.calcss > span'));
+
+// let addedCals = calValues.reduce((accumulator, drink) => {
+//     return +accumulator + +drink.textContent;
+//   }, 0)
+
+
+
 // handles local storage and 'splices' / deletes it from local storage 
 // recalls displayDrinks function to update the delete 
 function handleDelete(event) {
@@ -235,133 +211,8 @@ function handleDelete(event) {
 
 form.addEventListener('submit', handleSubmit);
 displayDrinks();
-bacCalc()
-
-
-
-
-
-
-
-
-
-// // Setting up variables for our HTML elements using DOM selection
-// const form = document.getElementById("taskform");
-// const tasklist = document.getElementById("tasklist");
-
-// form.addEventListener("submit", function (event) {
-//     event.preventDefault();
-
-//     console.log(form.elements.taskType.value)
-
-//     addTask(
-//         form.elements.taskName.value,
-//         form.elements.taskType.value,
-//         form.elements.taskRate.value,
-//         form.elements.taskTime.value,
-//         form.elements.taskClient.value,
-//     )
-//     console.log(taskList)
-// })
-
-// function displayTask(task) {
-//     let item = document.createElement("li");
-//     item.setAttribute("data-id", task.id);
-//     item.innerHTML = `<p><strong>${task.name}</strong><br>${task.type}</p>`;
-
-//     tasklist.appendChild(item);
-
-//     // Clear the value of the input once the task has been added to the page
-//     form.reset();
-
-//     // Setup delete button DOM elements
-//     let delButton = document.createElement("button");
-//     let delButtonText = document.createTextNode("Delete");
-//     delButton.appendChild(delButtonText);
-//     item.appendChild(delButton); // Adds a delete button to every task
-
-//     // Listen for when the delete button is clicked
-//     delButton.addEventListener("click", function (event) {
-
-//         taskList.forEach(function (taskArrayElement, taskArrayIndex) {
-//             if (taskArrayElement.id == item.getAttribute('data-id')) {
-//                 taskList.splice(taskArrayIndex, 1)
-//             }
-//         })
-
-//         // Make sure the deletion worked by logging out the whole array
-//         console.log(taskList)
-
-//         item.remove(); // Remove the task item from the page when button clicked
-//         // Because we used 'let' to define the item, this will always delete the right element
-
-//     })
-
-
-// }
-
-
-
-
-// // Create an object called 'task'
-// // Populate the properties based on the provided data model
-
-// // Commented out now the object creation is included in the function
-
-// // var task = {
-// //   name: "Initial Sketches",
-// //   type: "Concept Ideation",
-// //   id: Date.now(),
-// //   date: new Date().toISOString(),
-// //   rate: 50,
-// //   time: 5,
-// //   client: "Google"
-// // }
-
-// // console.log(task);
-
-
-// // Create an array called 'taskList' var taskList = [];
-
-// // Create a function called 'addTask'
-// // Give the function input parameters for: name, type, rate, time, client
-// // Paste your object definition from above in the function
-// // Replace the property values with the input paramaters
-// // Add the object to the taskList array
-
-// function addTask(name, type, rate, time, client) {
-
-//     // Creating the object with the usual property:value syntax
-//     // Create task object 
-//     // let task = {
-//     //   name: name,
-//     //   type: type,
-//     //   id: Date.now(),
-//     //   date: new Date().toISOString(),
-//     //   rate: rate,
-//     //   time: time,
-//     //   client: client
-//     // }
-
-//     // Creating the object, directly passing in the input parameters
-//     let task = {
-//         name,
-//         type,
-//         id: Date.now(),
-//         date: new Date().toISOString(),
-//         rate,
-//         time,
-//         client
-//     }
-
-//     taskList.push(task);
-//     displayTask(task);
-
-// }
-
-// // Call the function with test values for the input paramaters
-// addTask("Initial Sketches", "Concept Ideation", 50, 5, "Google");
-
-// // Log the array to the console.
-// console.log(taskList);
+bacCalc();
+drinkCalc();
+calCalc();
+priceCalc();
 
