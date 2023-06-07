@@ -147,7 +147,7 @@ function displayDrinks() {
               </div>
             </div>
             <p class="loccss">Location: <span>${drink.location}</span></p>
-            <p class="loccss">Location: <span>${drink.timeFormat}</span></p>
+            <p class="loccss">Time: <span>${drink.timeFormat}</span></p>
           </li>
         </ul>
       </div>
