@@ -8,13 +8,15 @@ Having wireframes beforehand was extremely important in this process, as they we
 
 ### APIs
 For this assignment I used a11y-dialog, echarts and parcel.
-*__Parcel__ \ was used for development
-*__a11y-dialog__ \ was used for the use of pop ups as seen when adding a drink
+
+__Parcel__\ was used for development
+
+__a11y-dialog__\ was used for the use of pop ups as seen when adding a drink
 The process of using this API was relatively simple. using npm install a11y-dialog, i was able to copy over the html, css and js that was used and modify accordingly. It was useful to see the html and modify it to my own. I was not completely confident with the layout of submissions/buttons, so with it already having a submit button it made it easier to work around the layout and implement my own. 
 
 ![a11y-dialog API](readmeimage/a11y.png)
 
-*__echarts__ \ was used for both the donut and bar graph
+*__echarts__\ was used for both the donut and bar graph
 These charts were extremely useful in the instance of not having to build a graph from scratch. They were limited to certain colours and paddings not being able to be adjusted, which is reflected in the design differences in my graphs, however overall they were extremely useful in handling input and being easily adjustable. 
 
 ![echart API](readmeimage/echarts.png)
