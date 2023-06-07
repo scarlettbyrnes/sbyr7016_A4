@@ -28,11 +28,14 @@ var myChart = echarts.init(document.getElementById('pieChart'));
 
 var trackData = [priceAdded, newCals, newDrinks]
 option = {
-     title: {
-       text: `${drinksAdded}`,
-       left: 'center',
-       top: 'center',
-     },
+    //  title: {
+    //    text: `${drinksAdded}`,
+    //    left: 'center',
+    //    top: 'center',
+    //  },
+    // grid: {
+    //     bottom:20,
+    //   },
     color:['#FDBE01', '#FE724D', '#752EFE'],
     angleAxis: {
         show: false,
@@ -64,7 +67,6 @@ option = {
             formatter: '{b}'
         },
         coordinateSystem: 'polar'
-
     }]
 };
 myChart.setOption(option);

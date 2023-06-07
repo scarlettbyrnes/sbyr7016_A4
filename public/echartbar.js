@@ -8,6 +8,9 @@ let drinksAdded = document.querySelectorAll('.drink').length;
 
 
 option = {
+  grid: {
+    top: 20,
+  },
   xAxis: {
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Today', 'Sat', 'Sun']
