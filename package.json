@@ -8,7 +8,7 @@
     "prestart": "parcel build ./public/index.html",
     "dev": "parcel serve ./public/index.html"
   },
-  "author": "Rob Dongas",
+  "author": "Scarlett Byrnes",
   "devDependencies": {
     "@babel/core": "7.2.0",
     "@parcel/resolver-glob": "^2.9.1",

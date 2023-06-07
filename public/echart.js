@@ -53,7 +53,7 @@ option = {
         left: '80%',
         right: '80%',
         bottom: '80%',
-        barWidth: 50,
+        barWidth: 55,
         data: trackData,
         colorBy: 'data',
         showBackground: true,
