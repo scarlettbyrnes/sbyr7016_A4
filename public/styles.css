@@ -776,4 +776,19 @@ justify-content: center;
  .circlecontainer{
   width:100%;
  }
+
+ .rightcontainergraph {
+  width: 100%;
+}
+canvas {
+  width: 360px !important;
+  height: 240px !important;
+}
+.pieChart {
+  width: 100%;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+}
 }
