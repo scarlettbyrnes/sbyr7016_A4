@@ -41,14 +41,18 @@ Another small addition to the design was a mood tracker. This is the section whi
 
 ### Extras
 Throughout my design I have two graphs (donut and bar). The donut graph was one of my most important features, that although not specifically needed in the scope of this task, i felt it was really important to show more was being tracked than just a drink to a container. When adding a drink, 5 things are updated.
-*__BAC__ - The BAC levels are changed. For the purpose and scope of this design, I have hardcoded that every drink increases someones BAC by 0.02 (this is based off an average). Although not completely accurate for every drink, it provides an estimate for individuals for the process of tracking their intake and also if they are safe to drive etc. 
+
+__BAC__ - The BAC levels are changed. For the purpose and scope of this design, I have hardcoded that every drink increases someones BAC by 0.02 (this is based off an average). Although not completely accurate for every drink, it provides an estimate for individuals for the process of tracking their intake and also if they are safe to drive etc. 
 
 ![BAC](readmeimage/BAC.png)
 
-*__Drinks__ - This feature can be seen in the first circle at the top of the page. It displays how many drinks the user has submitted to the system. 
-*__Calories__ - This feature tracks the calorie intake from each user based off the different categorys of drinks / selections. Again, as previously mentioned, every category has a hardcoded calorie for the scope of this assessment.
-*__Price__ - This feature tracks the amount spent on drinks from each user. 
-*__Donut Graph__ - This graph combines drinks, calories and price in a visual form. The max (when the circle completes) is set to a random number currently, as a sign up was not needed in this assignment. For the future, a sign up would be needed to see user goals and then the ring max would be based off this. 
+__Drinks__ - This feature can be seen in the first circle at the top of the page. It displays how many drinks the user has submitted to the system. 
+
+__Calories__ - This feature tracks the calorie intake from each user based off the different categorys of drinks / selections. Again, as previously mentioned, every category has a hardcoded calorie for the scope of this assessment.
+
+__Price__ - This feature tracks the amount spent on drinks from each user. 
+
+__Donut Graph__ - This graph combines drinks, calories and price in a visual form. The max (when the circle completes) is set to a random number currently, as a sign up was not needed in this assignment. For the future, a sign up would be needed to see user goals and then the ring max would be based off this. 
 
 ![Donut Graph](readmeimage/donut.png)
 
