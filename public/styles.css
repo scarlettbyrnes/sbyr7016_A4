@@ -720,7 +720,7 @@ justify-content: center;
 }
 
 
-/* 
+
 
 @media only screen and (max-width: 400px) {
  .picblock{
@@ -744,8 +744,9 @@ justify-content: center;
   display: none;
  }
 
- .body{
-  margin: 0;
+ body{
+  display: flex;
+  flex-direction: column;
  }
 
  .bodysection{
@@ -758,8 +759,7 @@ justify-content: center;
  }
 
  #pieChart{
-  width:250px;
-  height: 250px;
+  height: 300px;
   margin-bottom: 130px;
   padding: 0;
  }
@@ -770,5 +770,10 @@ justify-content: center;
 
  .rightcontainergraph{
   width: auto;
+  align-items: stretch;
  }
-} */
+
+ .circlecontainer{
+  width:100%;
+ }
+}
